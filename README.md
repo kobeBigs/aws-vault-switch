@@ -12,12 +12,12 @@ Written by [Kobe Subramaniam](https://kobebigs.com).
 
 ## Installation
 
-Download executables using `wget`, unzip it and install.
+Currently compatible on Mac & Linux only.
 
 ### Linux
 
 ``` bash
-wget https://github.com/kobeBigs/aws-vault-switch/releases/download/v0.1.0-beta/aws-vault-switch-linux.tar.gz
+wget https://github.com/kobeBigs/aws-vault-switch/releases/download/v0.1.0/aws-vault-switch-linux.tar.gz
 tar -xzvf aws-vault-switch-linux.tar.gz
 sudo mv aws-vault-switch-linux /usr/local/bin/aws-vault-switch
 ```
@@ -25,7 +25,7 @@ sudo mv aws-vault-switch-linux /usr/local/bin/aws-vault-switch
 ### Mac
 
 ``` bash
-wget https://github.com/kobeBigs/aws-vault-switch/releases/download/v0.1.0-beta/aws-vault-switch-mac.tar.gz
+wget https://github.com/kobeBigs/aws-vault-switch/releases/download/v0.1.0/aws-vault-switch-mac.tar.gz
 tar -xzvf aws-vault-switch-mac.tar.gz
 sudo mv aws-vault-switch-mac /usr/local/bin/aws-vault-switch
 ```
@@ -40,14 +40,12 @@ go build -o aws-vault-switch
 
 ## Usage
 
-1. List profiles
-
-    ```bash
-    aws-vault-switch ls
+1. Run the command
+    
+    ``` bash
+    aws-vault-switch 
     ```
 
-2. Switch profile
+2. Select profile to switch to
 
-    ```bash
-    aws-vault-switch switch -p <profile name>
-    ```
+    ![image](https://github.com/kobeBigs/aws-vault-switch/assets/461414/6133f620-5d20-43e6-9924-376ddb7495e4)
