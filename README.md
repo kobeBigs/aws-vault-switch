@@ -16,38 +16,38 @@ Download executables using `wget`, unzip it and install.
 
 ### Linux
 
-    ``` bash
-    wget https://github.com/kobeBigs/aws-vault-switch/releases/download/v0.1.0-beta/aws-vault-switch-linux.tar.gz
-    tar -xzvf aws-vault-switch-linux.tar.gz
-    sudo mv aws-vault-switch-linux /usr/local/bin/aws-vault-switch
-    ```
+``` bash
+wget https://github.com/kobeBigs/aws-vault-switch/releases/download/v0.1.0-beta/aws-vault-switch-linux.tar.gz
+tar -xzvf aws-vault-switch-linux.tar.gz
+sudo mv aws-vault-switch-linux /usr/local/bin/aws-vault-switch
+```
 
 ### Mac
 
-    ``` bash
-    wget https://github.com/kobeBigs/aws-vault-switch/releases/download/v0.1.0-beta/aws-vault-switch-mac.tar.gz
-    tar -xzvf aws-vault-switch-mac.tar.gz
-    sudo mv aws-vault-switch-mac /usr/local/bin/aws-vault-switch
-    ```
+``` bash
+wget https://github.com/kobeBigs/aws-vault-switch/releases/download/v0.1.0-beta/aws-vault-switch-mac.tar.gz
+tar -xzvf aws-vault-switch-mac.tar.gz
+sudo mv aws-vault-switch-mac /usr/local/bin/aws-vault-switch
+```
 
 Clone the repository and build the application
 
-    ``` bash
-    git clone https://github.com/kobebigs/aws-vault-switch
-    cd aws-vault-switch
-    go build -o aws-vault-switch
-    ```
+``` bash
+git clone https://github.com/kobebigs/aws-vault-switch
+cd aws-vault-switch
+go build -o aws-vault-switch
+```
 
 ## Usage
 
 1. List profiles
 
-    ``` bash
+    ```bash
     aws-vault-switch ls
     ```
 
 2. Switch profile
 
-    ``` bash
+    ```bash
     aws-vault-switch switch -p <profile name>
     ```
