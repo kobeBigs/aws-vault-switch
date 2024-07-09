@@ -22,6 +22,14 @@ tar -xzvf aws-vault-switch-linux.tar.gz
 sudo mv aws-vault-switch-linux /usr/local/bin/aws-vault-switch
 ```
 
+### Mac (ARM64)
+
+``` bash
+wget https://github.com/kobeBigs/aws-vault-switch/releases/download/v0.1.0/aws-vault-switch-mac-arm.tar.gz
+tar -xzvf aws-vault-switch-mac-arm.tar.gz
+sudo mv aws-vault-switch-mac /usr/local/bin/aws-vault-switch
+```
+
 ### Mac
 
 ``` bash
