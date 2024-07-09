@@ -4,19 +4,44 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"strings"
 
-	"github.com/spf13/cobra"
+	"github.com/manifoldco/promptui"
 )
 
-var profile string
+func listAndSwitchProfiles() {
+	cmd := exec.Command("aws-vault", "list")
+	output, err := cmd.Output()
+	if err != nil {
+		fmt.Printf("Error listing profiles: %v\n", err)
+		return
+	}
 
-var switchCmd = &cobra.Command{
-	Use:   "switch",
-	Short: "Switch aws profiles without exiting",
-	Long:  `Use switch to change aws profiles without exiting from current shell session `,
-	Run: func(cmd *cobra.Command, args []string) {
-		switchProfile(profile)
-	},
+	profilesList := strings.Split(strings.TrimSpace(string(output)), "\n")
+
+	var profiles []string
+	for _, profileItem := range profilesList[2:] {
+		profileItems := strings.Fields(profileItem)
+		if len(profileItems) > 0 {
+			profiles = append(profiles, profileItems[0])
+		}
+	}
+	if len(profiles) == 0 {
+		fmt.Println("No profiles found.")
+		return
+	}
+
+	prompt := promptui.Select{
+		Label: "Select AWS Profile",
+		Items: profiles,
+	}
+	_, selectedProfile, err := prompt.Run()
+	if err != nil {
+		fmt.Printf("Selection failed: %v\n", err)
+		return
+	}
+
+	switchProfile(selectedProfile)
 }
 
 func switchProfile(profile string) {
@@ -31,10 +56,4 @@ func switchProfile(profile string) {
 		fmt.Fprintf(os.Stderr, "Error switching profile: %v\n", err)
 		os.Exit(1)
 	}
-}
-
-func init() {
-	rootCmd.AddCommand(switchCmd)
-	switchCmd.Flags().StringVarP(&profile, "profile", "p", "", "AWS profile to switch to")
-	switchCmd.MarkFlagRequired("profile")
 }

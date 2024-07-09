@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/spf13/cobra"
@@ -8,13 +9,16 @@ import (
 
 var rootCmd = &cobra.Command{
 	Use:   "aws-vault-switch",
-	Short: "A simple CLI app that extends aws-vault to switch between profiles",
-	Long:  `aws-vault-switch is a CLI tool designed to enable seamless switching between AWS profiles without the need to exit the current session`,
+	Short: "Switch between AWS profiles",
+	Long:  `A simple CLI app that extends aws-vault to allow switching between managed AWS profiles`,
+	Run: func(cmd *cobra.Command, args []string) {
+		listAndSwitchProfiles()
+	},
 }
 
 func Execute() {
-	err := rootCmd.Execute()
-	if err != nil {
+	if err := rootCmd.Execute(); err != nil {
+		fmt.Println(err)
 		os.Exit(1)
 	}
 }
